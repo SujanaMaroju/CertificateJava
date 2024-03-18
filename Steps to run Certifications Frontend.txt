@@ -1,0 +1,12 @@
+# Steps to run Certifications Frontend
+
+# UnZip the certifications_Frontend and open the folder in any IDE (VS Code/Intellij etc)
+
+# 1. Navigate to certifications_Frontend and then run the command:
+
+    # npm install
+    # ng serve
+
+# Server will be starting on port 4200
+
+# http://localhost:4200/

@@ -1,0 +1,59 @@
+<div class="admin">
+    <div class="admin_container" [ngClass]="showEmpContent?'':'admin_container_bcgd'">
+         <div [ngClass]="showEmpContent?'admin_search_in':'admin_search_out'">
+            <div *ngIf="showEmpContent" class="admin_emp_content">
+                <i class="pi pi-bars" (click)="onNavOpen()"></i>
+                <p-avatar [label]="empName[0]" styleClass="mr-2" size="normal" shape="circle"></p-avatar>
+                <span>{{empName}}</span>
+            </div>
+            <form class="admin_form" [formGroup]="userForm">
+                <label *ngIf="!showEmpContent" for="float-label">Admin Search</label>
+                <p-autoComplete formControlName="selectedData" inputId="float-label" placeholder="Enter name"
+                 [dropdown]="true" [suggestions]="categoryName=='Certifications'? certList :userList" 
+                (completeMethod)="filterEmployees($event)" [field]="categoryName=='Certifications'?'certificationName':'employeeName'"></p-autoComplete>
+                <div class="admin_form_radio"  *ngIf="!showEmpContent">
+                    <div *ngFor="let category of categories" class="field-checkbox">
+                      <p-radioButton [inputId]="category" [value]="category" formControlName="selectedCategory"></p-radioButton>
+                      <label [for]="category" class="ml-2">{{ category }}</label>
+                    </div>
+                </div>
+                <div class="admin_search_btn">
+                    <p-button label="Search" [disabled]="false" (click)="onSubmit()"></p-button>
+                </div>
+                <div class="admin_back" *ngIf="showEmpContent">
+                    <p-button label="Back" [disabled]="false" (click)="goToMain()"></p-button>
+                </div>
+            </form>
+        </div>
+        <div class="admin_content scroll-container" *ngIf="showEmpContent">
+            @if(certData.certifications.length){
+                <div class="card">
+                  <p-tabView>
+                    <p-tabPanel *ngFor="let tab of tabs; let i = index; let last = last" [header]="tab">
+                        @if(isCertAvailable(i)){
+                            <div *ngFor="let certDetails of certData.certifications">
+                                @if(certDetails.status === i){
+                                    <app-certification-card [certData]="certDetails" [email]="certData.email" [userId]="certData.id" (certRemoved)="onCertRemoved($event)"></app-certification-card>
+                                }
+                              </div>
+                        }
+                        @else {
+                            <h3 class="no_cert">No Certifications available!!</h3>
+                        }
+                      </p-tabPanel>
+                  </p-tabView>
+                </div>
+            } @else{
+                <div>
+                    <h3>No Certifications available!!</h3>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="admin_nav" *ngIf="globalService.showNavigationFlag">
+        <app-side-nav></app-side-nav>
+    </div>
+</div>
+<div class="admin_dialog" *ngIf="globalService.showDialogFlagInAddCert">
+    <app-new-cert-dialog></app-new-cert-dialog>
+</div>

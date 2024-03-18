@@ -1,0 +1,159 @@
+.admin{
+    padding-top: 5rem;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    .admin_container{
+        margin: 0 auto;
+        max-width: 1728px;
+        width: 95%;
+        height: 98%;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 10px;
+        position: relative;
+         .admin_search_out{
+            width: 60%;
+            height: 50%;
+            max-height: 400px;
+            min-height: 350px;
+            padding: 30px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 50px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            form{
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                label{
+                    margin-bottom: 10px;
+                    font-weight: 600;
+                }
+                .admin_search_btn{
+                    margin-top: 10px;
+                }
+            }
+        }
+        .admin_search_in{
+            padding: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 10%;
+            min-height: 80px;
+            border-bottom: 2px solid #eeeeee;
+            .admin_emp_content{
+                i{
+                    margin: 0 10px;
+                    cursor: pointer;
+                }
+                span{
+                    margin: 0 5px;
+                    font-weight: 600;
+                }
+            }
+            form{
+                display: flex;
+                .admin_search_btn{
+                    margin-left: 10px;
+                }
+                .admin_back{
+                    margin-left: 10px;
+                }
+            }
+        }
+        .admin_content{
+            height: 90%;
+            width: 100%;
+            padding: 20px;
+            overflow-y: auto;
+        }
+    }
+}
+
+.admin_container_bcgd::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #1279d6;
+}
+
+.admin_dialog{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 4rem;
+    z-index: 1;
+}
+
+.admin_dialog::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #222;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+}
+
+
+.admin_nav{
+    width: 100%;
+    height: calc(100% - 4rem);
+    overflow: hidden;
+    position: absolute;
+    top: 4rem;
+    z-index: 999;
+}
+
+.admin_form_radio{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    width: 100%;
+}
+
+@media (max-width:769px){
+    form{
+        font-size: 14px;
+    }
+    .admin_form_radio{
+        display: flex;
+        align-items: baseline;
+        // justify-content: space-evenly;
+        padding: 10px;
+        width: 100%;
+        flex-direction: column;
+        .field-checkbox{
+            display: flex;
+            align-items: baseline;
+            margin-top: 10px;
+        }
+    }
+}
+
+.no_cert{
+    text-align:center;
+}
+
+
+@media (max-width:700px){
+    .admin_search_in ::ng-deep {
+        font-size: 14px
+    }
+}
